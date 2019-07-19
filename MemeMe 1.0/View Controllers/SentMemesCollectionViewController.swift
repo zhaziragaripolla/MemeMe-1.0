@@ -30,8 +30,6 @@ class SentMemesCollectionViewController: UIViewController {
     
     func setupCollectionView() {
         let space: CGFloat = 2.0
-        flowLayout.minimumInteritemSpacing = space
-        flowLayout.minimumLineSpacing = space
         let orientation = UIDevice.current.orientation
         let dimension = UIDeviceOrientation.portrait == orientation ? ((view.frame.size.width - (space)) / 2.0) : ((view.frame.size.height - (space)) / 2.0)
         flowLayout.itemSize = CGSize(width: dimension, height: dimension)
@@ -70,4 +68,11 @@ extension SentMemesCollectionViewController: UICollectionViewDataSource, UIColle
         navigationController?.pushViewController(vc, animated: true)
     }
     
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
+        return 0
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
+        return 0
+    }
 }

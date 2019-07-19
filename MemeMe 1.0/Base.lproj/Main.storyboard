@@ -124,15 +124,15 @@
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="29r-Sg-qL1">
                                 <rect key="frame" x="0.0" y="0.0" width="414" height="813"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="3" minimumInteritemSpacing="3" id="4sa-N6-vq6">
+                                <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="0.0" minimumInteritemSpacing="0.0" id="4sa-N6-vq6">
                                     <size key="itemSize" width="237" height="278"/>
                                     <size key="headerReferenceSize" width="0.0" height="0.0"/>
                                     <size key="footerReferenceSize" width="0.0" height="0.0"/>
-                                    <inset key="sectionInset" minX="0.0" minY="10" maxX="0.0" maxY="10"/>
+                                    <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                 </collectionViewFlowLayout>
                                 <cells>
                                     <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleAspectFit" reuseIdentifier="cell" id="FsA-Ep-2KX" customClass="MemeCollectionViewCell" customModule="MemeMe_1_0" customModuleProvider="target">
-                                        <rect key="frame" x="88.5" y="10" width="237" height="278"/>
+                                        <rect key="frame" x="88.5" y="0.0" width="237" height="278"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO">
                                             <rect key="frame" x="0.0" y="0.0" width="237" height="278"/>
@@ -302,11 +302,11 @@
             </objects>
             <point key="canvasLocation" x="748" y="117"/>
         </scene>
-        <!--Table-->
+        <!--Navigation Controller-->
         <scene sceneID="rO7-PX-X6S">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="eSK-iF-v5U" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Table" image="collection" id="ssQ-ai-meE"/>
+                    <tabBarItem key="tabBarItem" title="" image="table" id="ssQ-ai-meE"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="diX-6q-9hU">
                         <rect key="frame" x="0.0" y="44" width="414" height="44"/>
@@ -321,11 +321,11 @@
             </objects>
             <point key="canvasLocation" x="1666.6666666666667" y="-209.59821428571428"/>
         </scene>
-        <!--Collection-->
+        <!--Navigation Controller-->
         <scene sceneID="C7a-2V-WXr">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="gHQ-eK-xzg" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Collection" image="collection" id="6tB-2M-nMQ"/>
+                    <tabBarItem key="tabBarItem" title="" image="collection" id="6tB-2M-nMQ"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="7pI-Up-bwu">
                         <rect key="frame" x="0.0" y="44" width="414" height="44"/>
@@ -343,5 +343,6 @@
     </scenes>
     <resources>
         <image name="collection" width="30" height="30.5"/>
+        <image name="table" width="30" height="30"/>
     </resources>
 </document>
