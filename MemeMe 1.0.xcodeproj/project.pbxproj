@@ -39,7 +39,7 @@
 		56AB851322D0981400A28B47 /* MemeEditorViewController+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "MemeEditorViewController+Extensions.swift"; sourceTree = "<group>"; };
 		56E136B922CF440C00C06942 /* Meme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Meme.swift; sourceTree = "<group>"; };
 		56FF6AD522E1B20500C26ACB /* MemeStorage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = MemeStorage.swift; path = ../../MemeStorage.swift; sourceTree = "<group>"; };
-		56FF6AD722E1C67300C26ACB /* logo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = logo.png; path = ../../MemeMe_assets/logo.png; sourceTree = "<group>"; };
+		56FF6AD722E1C67300C26ACB /* logo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = logo.png; path = Assets.xcassets/logo.imageset/logo.png; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
