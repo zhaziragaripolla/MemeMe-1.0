@@ -37,10 +37,14 @@ extension MemeEditorViewController: UITextFieldDelegate {
             .font: UIFont(name: "HelveticaNeue-CondensedBlack", size: 40)!,
             .strokeWidth: -5
         ]
-        
+ 
         textField.defaultTextAttributes = memeTextAttributes
         textField.textAlignment = .center
         textField.text = text
+        
+        topTextField.delegate = self
+        bottomTextField.delegate = self
+        imagePicker.delegate = self
     }
 }
 

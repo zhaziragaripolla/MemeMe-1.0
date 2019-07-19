@@ -35,9 +35,6 @@ class MemeEditorViewController: UIViewController, UINavigationControllerDelegate
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        topTextField.delegate = self
-        bottomTextField.delegate = self
-        imagePicker.delegate = self
         setupView()
     }
     
