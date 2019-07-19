@@ -38,7 +38,7 @@ class MemeEditorViewController: UIViewController, UINavigationControllerDelegate
         topTextField.delegate = self
         bottomTextField.delegate = self
         imagePicker.delegate = self
-        resetView()
+        setupView()
     }
     
     override func viewWillDisappear(_ animated: Bool) {
@@ -51,6 +51,7 @@ class MemeEditorViewController: UIViewController, UINavigationControllerDelegate
         switch (sender.tag) {
         case 0:
             imagePicker.sourceType = .camera
+            present(imagePicker, animated: true)
             break
         case 1:
             imagePicker.sourceType = .photoLibrary
@@ -62,16 +63,20 @@ class MemeEditorViewController: UIViewController, UINavigationControllerDelegate
     }
     
     @IBAction func tapCancel(_ sender: Any) {
+        setupView()
         dismiss(animated: true, completion: nil)
-        //resetView()
     }
     
-    func resetView() {
-        shareButton.isEnabled = false
-        cancelButton.isEnabled = false
+    func setupView() {
         setupTextFields()
-        //imageView.image = nil
-        //imageView.backgroundColor = .gray
+        if image != nil {
+            imageView.image = image
+            shareButton.isEnabled = true
+        }
+        else {
+            imageView.image = nil
+            shareButton.isEnabled = false
+        }
         view.backgroundColor = .white
     }
     
@@ -85,7 +90,7 @@ class MemeEditorViewController: UIViewController, UINavigationControllerDelegate
         activityController.completionWithItemsHandler = { (activity, success, items, error) in
             if success {
                 self.save()
-                self.resetView()
+                self.setupView()
             }
             
             if let error = error {
@@ -119,7 +124,7 @@ class MemeEditorViewController: UIViewController, UINavigationControllerDelegate
     // MARK: Save an image
     func save() {
         if let memedImage = generateMemedImage(), let image = image, let top = topTextField.text, let bottom = bottomTextField.text {
-            MemeStorage.sharedInstance.save(originalImage: image, topText: top, bottomText: bottom, memedImage: memedImage)
+            MemeStorage.shared.save(originalImage: image, topText: top, bottomText: bottom, memedImage: memedImage)
             showSentMemes()
         }
         else {
@@ -155,8 +160,7 @@ class MemeEditorViewController: UIViewController, UINavigationControllerDelegate
         NotificationCenter.default.removeObserver(self, name: UIResponder.keyboardWillShowNotification, object: nil)
         NotificationCenter.default.removeObserver(self, name: UIResponder.keyboardWillHideNotification, object: nil)
     }
-    
-    
+
     // MARK: Shifting up view when keyboard shows
     @objc func keyboardWillShow(_ notification: Notification) {
         // Checking if keyboard covers one of the texfields

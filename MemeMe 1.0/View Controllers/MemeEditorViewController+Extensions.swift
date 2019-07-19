@@ -48,8 +48,7 @@ extension MemeEditorViewController: UIImagePickerControllerDelegate {
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
         image = info[UIImagePickerController.InfoKey.originalImage] as? UIImage
       
-        shareButton.isEnabled = true
-        cancelButton.isEnabled = true
+        setupView()
         imageView.image = image
         dismiss(animated: true, completion: nil)
         

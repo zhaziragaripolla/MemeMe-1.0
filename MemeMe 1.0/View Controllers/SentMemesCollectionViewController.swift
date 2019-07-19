@@ -12,44 +12,62 @@ class SentMemesCollectionViewController: UIViewController {
 
     @IBOutlet weak var collectionView: UICollectionView!
     @IBOutlet weak var flowLayout: UICollectionViewFlowLayout!
+
     override func viewDidLoad() {
         super.viewDidLoad()
         
         title = "Sent memes"
-        
         collectionView.dataSource = self
         collectionView.delegate = self
-        collectionView.contentInset = UIEdgeInsets(top: 20, left: 0, bottom: 20, right: 0)
-//        collectionView.register(MemeCollectionViewCell.self, forCellWithReuseIdentifier: "cell")
+        
+        setupCollectionView()
+        setupBarButtonItems()
     }
     
-
+    override func viewWillAppear(_ animated: Bool) {
+        self.tabBarController?.tabBar.isHidden = false
+    }
+    
+    func setupCollectionView() {
+        let space: CGFloat = 2.0
+        flowLayout.minimumInteritemSpacing = space
+        flowLayout.minimumLineSpacing = space
+        let orientation = UIDevice.current.orientation
+        let dimension = UIDeviceOrientation.portrait == orientation ? ((view.frame.size.width - (space)) / 2.0) : ((view.frame.size.height - (space)) / 2.0)
+        flowLayout.itemSize = CGSize(width: dimension, height: dimension)
+    }
+    
+    func setupBarButtonItems() {
+        navigationItem.rightBarButtonItem = UIBarButtonItem.init(barButtonSystemItem: .add, target: self, action: #selector(startMemeEditor))
+    }
+    
+    @objc func startMemeEditor() {
+        guard let vc = storyboard?.instantiateViewController(withIdentifier: "MemeEditorViewController") as? MemeEditorViewController else {
+            print("Unable to instantiate MemeEditorVC")
+            return
+        }
+        present(vc, animated: true)
+    }
+    
 }
 extension SentMemesCollectionViewController: UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return MemeStorage.sharedInstance.count
+        return MemeStorage.shared.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "cell", for: indexPath) as! MemeCollectionViewCell
-        cell.imageView.image = MemeStorage.sharedInstance.memedImage(indexPath.row)
+        cell.imageView.image = MemeStorage.shared.memedImage(indexPath.row)
         return cell
     }
     
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        let space: CGFloat = 3.0
-        flowLayout.minimumInteritemSpacing = 0
-        flowLayout.minimumLineSpacing = 5
-        let width = (view.frame.size.width - (2 * space)) / 3.0
-        let height = (view.frame.size.height) / 3.0
-        return CGSize(width: width, height: height)
-    }
-    
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        let detailVC = storyboard?.instantiateViewController(withIdentifier: "DetailViewController") as! DetailViewController
-        let image = MemeStorage.sharedInstance.memedImage(indexPath.row)
-        detailVC.memeImageView.image = image
-        navigationController?.pushViewController(detailVC, animated: true)
+        guard let vc = storyboard?.instantiateViewController(withIdentifier: "DetailViewController") as? DetailViewController else {
+            print("Unable to instantiate DetailVC")
+            return
+        }
+        vc.id = indexPath.row
+        navigationController?.pushViewController(vc, animated: true)
     }
     
 }
