@@ -35,6 +35,7 @@ class MemeEditorViewController: UIViewController, UINavigationControllerDelegate
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         setupView()
     }
     

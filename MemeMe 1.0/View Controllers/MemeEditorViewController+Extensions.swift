@@ -41,9 +41,7 @@ extension MemeEditorViewController: UITextFieldDelegate {
         textField.defaultTextAttributes = memeTextAttributes
         textField.textAlignment = .center
         textField.text = text
-        
-        topTextField.delegate = self
-        bottomTextField.delegate = self
+        textField.delegate = self
         imagePicker.delegate = self
     }
 }
